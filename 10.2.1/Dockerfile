@@ -3,11 +3,6 @@ FROM adoptopenjdk/openjdk8:alpine
 ENV vb_version=10.2.1
 ENV st_version=10.2.1
 
-ARG VB_TMP_FILE=vb_tmp.zip
-
-#RUN cd /tmp
-#RUN wget https://bitbucket.org/art-uniroma2/vocbench3/downloads/vocbench3-${vb_version}-full.zip
-#COPY vocbench3-${vb_version}-full.zip /tmp
 RUN set -eux ; \
 	mkdir /opt/vocbench3 ; \
 	mkdir /opt/vocbench3/data ; \
