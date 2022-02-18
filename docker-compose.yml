@@ -1,27 +1,13 @@
-version: '3.8'
+version: '3.9'
 services:
   vocbench3:
-    image: vocbench3:10.2.1
+    image: vocbench3:latest
     build:
       context: 10.2.1
     ports:
     - "1979:1979"
     volumes:
-     - type: bind
-       source: ./volumes/stdata
-       target: /opt/vocbench3/data
-    links:
-    - graphdb
-  graphdb:
-    image: graphdb-with-st-sails:9.8.1-se
-    build:
-      context: ./helpers/graphdb-with-st-sails
-      args:
-        st_version: "10.2.1"
-        gdb_version: "9.8.1-se"
-    ports:
-     - "127.0.0.1:7200:7200"
-    volumes:
-     - type: bind
-       source: ./volumes/gdbhome
-       target: /opt/graphdb/home
+     - st_data:/opt/vocbench3/data
+
+volumes:
+  st_data:
